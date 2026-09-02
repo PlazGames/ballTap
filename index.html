@@ -2610,10 +2610,191 @@ function togglePause() {
 }
 
 
+function getDeviceId() {
+
+    let deviceId =
+        localStorage.getItem("ballTapDeviceId");
+
+    if (!deviceId) {
+
+        deviceId =
+            crypto.randomUUID();
+
+        localStorage.setItem(
+            "ballTapDeviceId",
+            deviceId
+        );
+
+    }
+
+    return deviceId;
+
+}
+
+
 async function submitScore(
     finalScoreValue
 ) {
 
+    if (
+        finalScoreValue <= 0
+    ) {
+
+        return;
+
+    }
+
+    let username =
+        localStorage.getItem(
+            "ballTapUsername"
+        );
+
+    if (!username) {
+
+        username =
+            prompt(
+                "Enter your name for the ballTap leaderboard:"
+            );
+
+        if (!username) {
+
+            username =
+                "Anonymous";
+
+        }
+
+        username =
+            username
+                .trim()
+                .slice(0, 20);
+
+        if (!username) {
+
+            username =
+                "Anonymous";
+
+        }
+
+        localStorage.setItem(
+            "ballTapUsername",
+            username
+        );
+
+    }
+
+    const deviceId =
+        getDeviceId();
+
+    try {
+
+        const {
+            data: existing,
+            error: findError
+        } =
+            await supabaseClient
+                .from("leaderboard")
+                .select(
+                    "id, score"
+                )
+                .eq(
+                    "device_id",
+                    deviceId
+                )
+                .maybeSingle();
+
+        if (findError) {
+
+            console.error(
+                "Leaderboard lookup failed:",
+                findError
+            );
+
+            return;
+
+        }
+
+        if (existing) {
+
+            if (
+                finalScoreValue >
+                Number(existing.score || 0)
+            ) {
+
+                const {
+                    error: updateError
+                } =
+                    await supabaseClient
+                        .from("leaderboard")
+                        .update({
+
+                            username:
+                                username,
+
+                            score:
+                                finalScoreValue
+
+                        })
+                        .eq(
+                            "device_id",
+                            deviceId
+                        );
+
+                if (updateError) {
+
+                    console.error(
+                        "Leaderboard update failed:",
+                        updateError
+                    );
+
+                }
+
+            }
+
+        }
+
+        else {
+
+            const {
+                error: insertError
+            } =
+                await supabaseClient
+                    .from("leaderboard")
+                    .insert({
+
+                        username:
+                            username,
+
+                        score:
+                            finalScoreValue,
+
+                        device_id:
+                            deviceId
+
+                    });
+
+            if (insertError) {
+
+                console.error(
+                    "Leaderboard insert failed:",
+                    insertError
+                );
+
+            }
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Supabase connection failed:",
+            error
+        );
+
+    }
+
+}
     if (
         finalScoreValue <= 0
     ) {
