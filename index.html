@@ -1002,6 +1002,324 @@ body {
 
 }
 
+#leaderboardScreen {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(45,8,15,0.98),
+            rgba(5,2,4,0.995)
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+#leaderboardPanel {
+
+    width: min(460px, calc(100vw - 30px));
+
+    max-height: min(650px, calc(100vh - 30px));
+
+    padding: 25px 20px 20px;
+
+    border:
+        1px solid
+        rgba(255,90,100,0.2);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(50,10,18,0.92),
+            rgba(13,4,8,0.96)
+        );
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,0.65),
+        0 0 50px
+        rgba(255,30,50,0.08);
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+#leaderboardTitle {
+
+    text-align: center;
+
+    font-size: 30px;
+
+    font-weight: 1000;
+
+    letter-spacing: -1px;
+
+}
+
+#leaderboardTitle span {
+
+    color: #ff5363;
+
+}
+
+#leaderboardSubtitle {
+
+    text-align: center;
+
+    margin-top: 5px;
+
+    color: #76565b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+#leaderboardList {
+
+    margin-top: 18px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+
+}
+
+.leaderboardRow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 57px;
+
+    margin-bottom: 8px;
+
+    padding: 8px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.04);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+}
+
+.leaderboardRow.first {
+
+    border-color:
+        rgba(255,215,80,0.2);
+
+    background:
+        rgba(255,215,80,0.045);
+
+}
+
+.leaderboardRow.second {
+
+    border-color:
+        rgba(200,210,220,0.14);
+
+    background:
+        rgba(200,210,220,0.035);
+
+}
+
+.leaderboardRow.third {
+
+    border-color:
+        rgba(205,130,70,0.16);
+
+    background:
+        rgba(205,130,70,0.035);
+
+}
+
+.rank {
+
+    width: 36px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: 1000;
+
+}
+
+.playerName {
+
+    flex: 1;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    color: #f1e6e8;
+
+}
+
+.playerScore {
+
+    font-size: 15px;
+
+    font-weight: 1000;
+
+    color: #ff6675;
+
+}
+
+.leaderboardEmpty {
+
+    padding: 40px 10px;
+
+    text-align: center;
+
+    color: #795a60;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+.leaderboardLoading {
+
+    padding: 40px 10px;
+
+    text-align: center;
+
+    color: #9f777d;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+#leaderboardButtons {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+}
+
+.leaderboardButton {
+
+    flex: 1;
+
+    padding: 13px 10px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(255,90,100,0.2);
+
+    background:
+        rgba(255,60,80,0.08);
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 1000;
+
+    cursor: pointer;
+
+}
+
+.leaderboardButton:hover {
+
+    background:
+        rgba(255,60,80,0.16);
+
+}
+
+#leaderboardClose {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5363,
+            #b8172d
+        );
+
+    border-color:
+        rgba(255,100,110,0.35);
+
+}
+
+.leaderboardOpenButton {
+
+    margin-top: 12px;
+
+    min-width: 150px;
+
+    padding: 12px 24px;
+
+    border:
+        1px solid
+        rgba(255,215,100,0.22);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,190,70,0.07);
+
+    color: #ffe9b0;
+
+    font-size: 14px;
+
+    font-weight: 1000;
+
+    cursor: pointer;
+
+}
+
+.leaderboardOpenButton:hover {
+
+    background:
+        rgba(255,190,70,0.14);
+
+}
+
 @media(max-width:600px) {
 
     #lane {
@@ -1041,6 +1359,32 @@ body {
         bottom: 20px;
 
         font-size: 8px;
+
+    }
+
+    #leaderboardPanel {
+
+        padding:
+            20px 15px 15px;
+
+        border-radius: 19px;
+
+    }
+
+    #leaderboardTitle {
+
+        font-size: 26px;
+
+    }
+
+    .leaderboardRow {
+
+        min-height: 54px;
+
+        gap: 8px;
+
+        padding:
+            7px 9px;
 
     }
 
@@ -1126,6 +1470,13 @@ body {
             PLAY
         </button>
 
+        <button
+            class="leaderboardOpenButton"
+            id="leaderboardStartButton"
+        >
+            🏆 LEADERBOARD
+        </button>
+
         <div class="secondaryText">
             Tap anywhere when a ball reaches you
         </div>
@@ -1153,6 +1504,13 @@ body {
             PLAY AGAIN
         </button>
 
+        <button
+            class="leaderboardOpenButton"
+            id="leaderboardGameOverButton"
+        >
+            🏆 LEADERBOARD
+        </button>
+
     </div>
 
     <div id="pauseScreen">
@@ -1174,6 +1532,48 @@ body {
 
     </div>
 
+    <div id="leaderboardScreen">
+
+        <div id="leaderboardPanel">
+
+            <div id="leaderboardTitle">
+                🏆 <span>LEADERBOARD</span>
+            </div>
+
+            <div id="leaderboardSubtitle">
+                TOP 10 BALLTAP PLAYERS
+            </div>
+
+            <div id="leaderboardList">
+
+                <div class="leaderboardLoading">
+                    Loading leaderboard...
+                </div>
+
+            </div>
+
+            <div id="leaderboardButtons">
+
+                <button
+                    class="leaderboardButton"
+                    id="leaderboardRefresh"
+                >
+                    ↻ REFRESH
+                </button>
+
+                <button
+                    class="leaderboardButton"
+                    id="leaderboardClose"
+                >
+                    CLOSE
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 
@@ -1181,9 +1581,11 @@ body {
 
 <script>
 
-const SUPABASE_URL = "https://iltfozebmhjadqgwmzhg.supabase.co/rest/v1/";
+const SUPABASE_URL =
+    "https://iltfozebmhjadqgwmzhg.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_fREc7ax7b7bB2yhJwbJFIQ_1elvxt9v";
+const SUPABASE_KEY =
+    "sb_publishable_fREc7ax7b7bB2yhJwbJFIQ_1elvxt9v";
 
 const supabaseClient =
     window.supabase.createClient(
@@ -1239,6 +1641,36 @@ const againButton =
 
 const resumeButton =
     document.getElementById("resumeButton");
+
+const leaderboardScreen =
+    document.getElementById(
+        "leaderboardScreen"
+    );
+
+const leaderboardList =
+    document.getElementById(
+        "leaderboardList"
+    );
+
+const leaderboardStartButton =
+    document.getElementById(
+        "leaderboardStartButton"
+    );
+
+const leaderboardGameOverButton =
+    document.getElementById(
+        "leaderboardGameOverButton"
+    );
+
+const leaderboardRefresh =
+    document.getElementById(
+        "leaderboardRefresh"
+    );
+
+const leaderboardClose =
+    document.getElementById(
+        "leaderboardClose"
+    );
 
 
 const colors = [
@@ -1383,6 +1815,9 @@ function sound(
 function startGame() {
 
     initAudio();
+
+    leaderboardScreen.style.display =
+        "none";
 
     cancelAnimationFrame(
         animationFrame
@@ -2265,6 +2700,206 @@ async function submitScore(
 }
 
 
+async function loadLeaderboard() {
+
+    leaderboardList.innerHTML =
+        `
+        <div class="leaderboardLoading">
+            Loading leaderboard...
+        </div>
+        `;
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("leaderboard")
+                .select(
+                    "username,score"
+                )
+                .order(
+                    "score",
+                    {
+                        ascending: false
+                    }
+                )
+                .limit(10);
+
+        if (error) {
+
+            leaderboardList.innerHTML =
+                `
+                <div class="leaderboardEmpty">
+                    Unable to load leaderboard.
+                </div>
+                `;
+
+            return;
+
+        }
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            leaderboardList.innerHTML =
+                `
+                <div class="leaderboardEmpty">
+                    No scores yet.<br>
+                    Be the first player!
+                </div>
+                `;
+
+            return;
+
+        }
+
+        leaderboardList.innerHTML = "";
+
+        data.forEach(
+            (entry, index) => {
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+                let positionClass =
+                    "";
+
+                if (index === 0) {
+                    positionClass =
+                        "first";
+                }
+
+                else if (index === 1) {
+                    positionClass =
+                        "second";
+                }
+
+                else if (index === 2) {
+                    positionClass =
+                        "third";
+                }
+
+                row.className =
+                    "leaderboardRow " +
+                    positionClass;
+
+                let medal =
+                    index + 1;
+
+                if (index === 0) {
+                    medal = "🥇";
+                }
+
+                else if (index === 1) {
+                    medal = "🥈";
+                }
+
+                else if (index === 2) {
+                    medal = "🥉";
+                }
+
+                const rank =
+                    document.createElement(
+                        "div"
+                    );
+
+                rank.className =
+                    "rank";
+
+                rank.textContent =
+                    medal;
+
+                const name =
+                    document.createElement(
+                        "div"
+                    );
+
+                name.className =
+                    "playerName";
+
+                name.textContent =
+                    entry.username ||
+                    "Anonymous";
+
+                const playerScore =
+                    document.createElement(
+                        "div"
+                    );
+
+                playerScore.className =
+                    "playerScore";
+
+                playerScore.textContent =
+                    Number(
+                        entry.score || 0
+                    ).toLocaleString();
+
+                row.appendChild(
+                    rank
+                );
+
+                row.appendChild(
+                    name
+                );
+
+                row.appendChild(
+                    playerScore
+                );
+
+                leaderboardList.appendChild(
+                    row
+                );
+
+            }
+        );
+
+    }
+
+    catch (error) {
+
+        leaderboardList.innerHTML =
+            `
+            <div class="leaderboardEmpty">
+                Connection failed.
+            </div>
+            `;
+
+    }
+
+}
+
+
+function openLeaderboard() {
+
+    if (running) {
+
+        return;
+
+    }
+
+    leaderboardScreen.style.display =
+        "flex";
+
+    loadLeaderboard();
+
+}
+
+
+function closeLeaderboard() {
+
+    leaderboardScreen.style.display =
+        "none";
+
+}
+
+
 function endGame() {
 
     if (!running) {
@@ -2350,6 +2985,54 @@ pauseButton.addEventListener(
 );
 
 
+leaderboardStartButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        openLeaderboard();
+
+    }
+);
+
+
+leaderboardGameOverButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        openLeaderboard();
+
+    }
+);
+
+
+leaderboardRefresh.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        loadLeaderboard();
+
+    }
+);
+
+
+leaderboardClose.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        closeLeaderboard();
+
+    }
+);
+
+
 document.addEventListener(
     "pointerdown",
     function(event) {
@@ -2358,6 +3041,15 @@ document.addEventListener(
             event.target.closest(
                 "button"
             )
+        ) {
+
+            return;
+
+        }
+
+        if (
+            leaderboardScreen.style.display ===
+            "flex"
         ) {
 
             return;
@@ -2375,6 +3067,24 @@ document.addEventListener(
     function(event) {
 
         if (
+            leaderboardScreen.style.display ===
+            "flex"
+        ) {
+
+            if (
+                event.code ===
+                "Escape"
+            ) {
+
+                closeLeaderboard();
+
+            }
+
+            return;
+
+        }
+
+        if (
             event.code === "Space" ||
             event.code === "ArrowUp" ||
             event.code === "KeyW"
@@ -2387,7 +3097,8 @@ document.addEventListener(
         }
 
         if (
-            event.code === "Escape"
+            event.code ===
+            "Escape"
         ) {
 
             togglePause();
